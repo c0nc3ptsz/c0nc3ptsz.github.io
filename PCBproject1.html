@@ -16,6 +16,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #10141c;
@@ -40,7 +44,7 @@
         }
 
         main {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: auto;
             padding: 60px 20px;
         }
@@ -53,6 +57,10 @@
         h2 {
             margin-top: 45px;
             margin-bottom: 15px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
         }
 
         p {
@@ -70,11 +78,18 @@
             font-weight: bold;
         }
 
+        .subtitle {
+            font-size: 1.1rem;
+            color: #aeb8c5;
+            margin-bottom: 30px;
+        }
+
         .section {
             background-color: #1a2230;
             padding: 30px;
             border-radius: 12px;
             margin-top: 25px;
+            border: 1px solid #293548;
         }
 
         .button {
@@ -85,20 +100,27 @@
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bold;
-            margin-top: 30px;
+            margin-top: 15px;
+            transition: 0.2s;
         }
 
-        footer {
-            background-color: #161c27;
-            color: #aeb8c5;
-            text-align: center;
-            padding: 25px;
-            margin-top: 60px;
+        .button:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid #2979ff;
+        }
+
+        .secondary-button:hover {
+            background-color: #1d2a3c;
         }
 
         .schematic-section {
-    margin-top: 45px;
-}
+            margin-top: 45px;
+        }
 
         .schematic-card {
             background-color: #1a2230;
@@ -112,19 +134,27 @@
             display: block;
             width: 100%;
             height: auto;
-            background-color: white;
             border-radius: 8px;
+        }
+
+        .schematic-image {
+            background-color: white;
+        }
+
+        .pcb-image {
+            background-color: #0d1117;
         }
 
         .schematic-caption {
             color: #aeb8c5;
             margin-top: 15px;
+            margin-bottom: 5px;
             font-size: 0.95rem;
         }
 
         .schematic-link {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 10px;
             color: #64b5f6;
             text-decoration: none;
             font-weight: bold;
@@ -134,136 +164,335 @@
             text-decoration: underline;
         }
 
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
 
+        .notes {
+            background-color: #1a2230;
+            border: 1px solid #293548;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 45px;
+        }
+
+        .project-flow {
+            background-color: #111720;
+            border-left: 4px solid #2979ff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            color: #c8d1dc;
+        }
+
+        footer {
+            background-color: #161c27;
+            color: #aeb8c5;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 750px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+        }
     </style>
 </head>
 
+
 <body>
 
-<nav>
-    <a href="cpuLogic.html">← Back to CPU and Logic Projects</a>
-</nav>
-
-<main>
-
-    <span class="status">PCB Design Complete</span>
-
-    <h1>4-Bit Adder / Accumulator PCB</h1>
+    <nav>
+        <a href="cpuLogic.html">← Back to CPU and Logic Projects</a>
+    </nav>
 
 
-    <div class="section">
+    <main>
 
-        <h2>Project Goal</h2>
+        <span class="status">PCB Design Complete</span>
 
-        <p>
-            The goal of this project was to finish a simple 4-bit adder. 
+        <h1>4-Bit Adder / Accumulator PCB</h1>
+
+        <p class="subtitle">
+           Double layer digital logic PCB designed in KiCad using
+            74 series registers, a binary adder, manual controls,
+            and accumulator feedback.
         </p>
 
-    </div>
 
-    <div class="schematic-section">
+        <!-- PROJECT GOAL -->
 
-    <h2>Schematic Design</h2>
+        <div class="section">
 
-    <p>
-        Before designing the PCB layout, I created the complete circuit
-        schematic in KiCad. The design combines two 4-bit registers,
-        a 4-bit binary adder, manual inputs, clock and reset controls,
-        output LEDs, and power circuitry.
-    </p>
+            <h2>Project Goal</h2>
 
-    <div class="schematic-card">
+            <p>
+                The goal of this project was mastery of the 74 series IC, mastery of Kicad, and an understanding of the logic behind a 4-bit adder/accumulator
+            </p>
 
-        <a href="assets/cpuProject/schematic.svg" target="_blank">
+            <p>
+                I designed a 4-bit adder/accumulator circuit that demonstrates
+                how registers, binary addition, clock signals, reset controls,
+                manual inputs, and feedback can work together as a basic
+                computer datapath.
+            </p>
 
-            <img
-                src="assets/cpuProject/schematic.svg"
-                alt="KiCad schematic of the 4-bit adder and accumulator circuit"
-            >
+        </div>
 
+
+
+        <div class="section">
+
+            <h2>System Architecture</h2>
+
+            <p>
+                The design uses two 4-bit registers and a 4-bit binary adder.
+                The R0 register stores a manually entered value, while the
+                accumulator register stores the running result.
+            </p>
+
+            <p>
+                The outputs of R0 and the accumulator are connected to the
+                two inputs of the binary adder. The resulting sum is routed
+                back into the accumulator so that each clock pulse can update
+                the stored result.
+            </p>
+
+            <div class="project-flow">
+                Manual Inputs → R0 Register → 4-Bit Adder → Accumulator → LEDs
+                <br>
+                Accumulator Output → Feedback into Adder
+            </div>
+
+        </div>
+
+
+
+        <div class="schematic-section">
+
+            <h2>Schematic Design</h2>
+
+            <p>
+                Before beginning the physical PCB layout, I created the full
+                circuit schematic in KiCad. This allowed me to define all
+                electrical connections and verify how the registers, adder,
+                switches, resistors, LEDs, clock, reset, and power circuitry
+                interact.
+            </p>
+
+            <div class="schematic-card">
+
+                <a
+                    href="assets/cpuProject/schematic.svg"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <img
+                        class="schematic-image"
+                        src="assets/cpuProject/schematic.svg"
+                        alt="KiCad schematic of the 4-bit adder accumulator circuit"
+                    >
+
+                </a>
+
+                <p class="schematic-caption">
+                    Complete KiCad schematic for the 4-bit adder/accumulator
+                    system. Click the schematic to inspect the full-resolution
+                    drawing.
+                </p>
+
+                <a
+                    class="schematic-link"
+                    href="assets/cpuProject/schematic.svg"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Open Full-Resolution Schematic ↗
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="schematic-section">
+
+            <h2>PCB Layout and Routing</h2>
+
+            <p>
+                After completing the schematic, I transferred the design into
+                KiCad's PCB Editor. I arranged the components to create a
+                logical signal flow from the manual inputs, through the R0
+                register and adder, into the accumulator and output LEDs.
+            </p>
+
+            <p>
+                The board uses two copper layers. Signal traces are distributed
+                between F.Cu and B.Cu, while the bottom copper layer also
+                contains a ground plane.
+            </p>
+
+            <p>
+                During routing I used KiCad's Design Rules Checker to locate
+                incomplete connections, shorts, clearance problems, and other
+                layout errors until the design reached zero unconnected items
+                and zero DRC errors.
+            </p>
+
+
+            <div class="image-grid">
+
+
+                <div class="schematic-card">
+
+                    <h3>Front Copper — F.Cu</h3>
+
+                    <a
+                        href="assets/cpuProject/bluelayer.png"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <img
+                            class="pcb-image"
+                            src="assets/cpuProject/bluelayer.png"
+                            alt="Front copper routing of the 4-bit accumulator PCB"
+                        >
+
+                    </a>
+
+                    <p class="schematic-caption">
+                        Front copper routing used for logic signals, control
+                        connections, and power distribution.
+                    </p>
+
+                    <a
+                        class="schematic-link"
+                        href="assets/cpuProject/bluelayer.png"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Open Front Layer ↗
+                    </a>
+
+                </div>
+
+
+
+                <div class="schematic-card">
+
+                    <h3>Back Copper — B.Cu</h3>
+
+                    <a
+                        href="assets/cpuProject/redlayer.png"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <img
+                            class="pcb-image"
+                            src="assets/cpuProject/redlayer.png"
+                            alt="Back copper routing of the 4-bit accumulator PCB"
+                        >
+
+                    </a>
+
+                    <p class="schematic-caption">
+                        Back copper routing containing additional signal
+                        connections and the PCB ground plane.
+                    </p>
+
+                    <a
+                        class="schematic-link"
+                        href="assets/cpuProject/redlayer.png"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Open Back Layer ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="section">
+
+            <h2>PCB Design</h2>
+
+            <p>
+                The board uses through-hole components so that the 74series IC,
+                switches, resistors, capacitors, and LEDs are functional.
+            </p>
+
+           
+
+        </div>
+
+
+        <!-- DOCUMENTATION -->
+
+        <div class="notes">
+
+            <h2>Documentation / Notes</h2>
+
+            <p>
+                I documented the design process, component behavior,
+                troubleshooting steps, and lessons learned while developing
+                the circuit.
+            </p>
+
+            <a
+                class="button secondary-button"
+                href="project1notes.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                View My Project Notes
+            </a>
+
+        </div>
+
+
+
+        <div class="section">
+
+            <h2>Current Status</h2>
+
+            <p>
+                The schematic, PCB layout, two-layer routing, electrical
+                verification, 3D inspection, Gerber generation, and drill-file
+                generation have been completed.
+            </p>
+
+            <p>
+                The next stage of the project is PCB fabrication, component
+                assembly, soldering, and physical hardware testing.
+            </p>
+
+        </div>
+
+
+        <a class="button" href="cpuLogic.html">
+            Return to CPU Projects
         </a>
 
-        <p class="schematic-caption">
-            Complete KiCad schematic for the 4-bit adder/accumulator system.
-            Click the schematic to open the full-resolution version.
-        </p>
-
-        <a
-            class="schematic-link"
-            href="assets/cpuProject/schematic.svg"
-            target="_blank">
-            Open Full-Resolution Schematic ↗
-        </a>
-
-    </div>
-
-</div>
-
-    <div class="notes">
-
-        <h2>Documentation/notes</h2>
-        <a class="button secondary-button"
-            href="project1notes.pdf"
-            target="_blank">
-            View my notes
-
-        </a>
-        
-
-    </div>
+    </main>
 
 
-    
-
-
-    <div class="section">
-
-        <h2>Architecture</h2>
-
-        <p>
-            The design uses two 4-bit registers and a 4-bit binary adder.
-            One register stores a manually entered value while the accumulator
-            stores the running result.
-        </p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>PCB Design</h2>
-
-        <p>
-            The schematic and PCB were designed in KiCad. The board uses
-            front and back copper layers, through-hole components, a ground
-            plane, decoupling capacitors, manual control buttons, and LEDs.
-        </p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Current Status</h2>
-
-        <p>
-            The schematic, PCB routing, design-rule checks, 3D inspection,
-            Gerber files, and drill files have been completed. The next stage
-            is PCB fabrication, soldering, and hardware testing.
-        </p>
-
-    </div>
-
-
-    <a class="button" href="cpuLogic.html">
-        Return to CPU Projects
-    </a>
-
-</main>
-
-<footer>
-    <p>© 2026 Evan Chen. All rights reserved.</p>
-</footer>
+    <footer>
+    </footer>
 
 </body>
 
