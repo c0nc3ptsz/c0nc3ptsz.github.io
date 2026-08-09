@@ -95,6 +95,46 @@
             padding: 25px;
             margin-top: 60px;
         }
+
+        .schematic-section {
+    margin-top: 45px;
+}
+
+        .schematic-card {
+            background-color: #1a2230;
+            border: 1px solid #293548;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .schematic-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .schematic-caption {
+            color: #aeb8c5;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .schematic-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .schematic-link:hover {
+            text-decoration: underline;
+        }
+
+
     </style>
 </head>
 
@@ -120,6 +160,44 @@
         </p>
 
     </div>
+
+    <div class="schematic-section">
+
+    <h2>Schematic Design</h2>
+
+    <p>
+        Before designing the PCB layout, I created the complete circuit
+        schematic in KiCad. The design combines two 4-bit registers,
+        a 4-bit binary adder, manual inputs, clock and reset controls,
+        output LEDs, and power circuitry.
+    </p>
+
+    <div class="schematic-card">
+
+        <a href="assets/cpuProject/schematic.svg" target="_blank">
+
+            <img
+                src="assets/cpuProject/schematic.svg"
+                alt="KiCad schematic of the 4-bit adder and accumulator circuit"
+            >
+
+        </a>
+
+        <p class="schematic-caption">
+            Complete KiCad schematic for the 4-bit adder/accumulator system.
+            Click the schematic to open the full-resolution version.
+        </p>
+
+        <a
+            class="schematic-link"
+            href="assets/cpuProject/schematic.svg"
+            target="_blank">
+            Open Full-Resolution Schematic ↗
+        </a>
+
+    </div>
+
+</div>
 
     <div class="notes">
 
